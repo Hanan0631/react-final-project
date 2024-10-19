@@ -1,6 +1,9 @@
 //react-hook-form
 import { useForm } from "react-hook-form";
 
+//react-router-dom
+import { useNavigate } from "react-router-dom";
+
 //services
 import { loginUser } from "services/auth";
 
@@ -11,6 +14,8 @@ import logo from "assets/images/logo.svg";
 import styles from "./form.module.css";
 
 function Login({ setIsRegistered }) {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -22,7 +27,8 @@ function Login({ setIsRegistered }) {
   const username = watch("username");
 
   const onSubmit = async () => {
-    await loginUser(username, password);
+    const { response } = await loginUser(username, password);
+    if (response) navigate("/products");
   };
   return (
     <div className={styles.form}>

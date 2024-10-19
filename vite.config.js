@@ -6,7 +6,7 @@ const paths = [
   "assets",
   "components",
   "configs",
-  "layouts",
+  "hooks",
   "pages",
   "router",
   "services",
