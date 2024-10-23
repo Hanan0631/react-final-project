@@ -3,7 +3,8 @@ import deleteButton from "assets/images/delete.svg";
 import editButton from "assets/images/edit.svg";
 
 //utils
-import { e2p } from "utils/e2p";
+import { e2p } from "utils/replaceNumber";
+import { sp } from "utils/replaceNumber";
 
 //styles
 import styles from "./TableData.module.css";
@@ -19,11 +20,11 @@ function TableData({ data }) {
         <span></span>
       </div>
       <div className={styles.body}>
-        {data.data.map((item) => (
+        {data?.data.data.map((item) => (
           <div className={styles.row} key={item.id}>
             <span>{item.name}</span>
             <span>{e2p(item.quantity)}</span>
-            <span>{e2p(item.price)} میلیون تومان</span>
+            <span>{sp(item.price)} تومان</span>
             <span>{item.id}</span>
             <span className={styles.images}>
               <img src={editButton} />

@@ -1,17 +1,28 @@
+//react
+import { useState } from "react";
+
 ///assets
 import setting from "assets/images/setting.svg";
 
-//templates
-import ProductsList from "components/templates/ProductsList";
-import SearchBox from "components/templates/SearchBox";
+//components
+import ProductsList from "components/ProductsList";
+import SearchBox from "components/SearchBox";
+import AddProduct from "components/AddProduct";
 
-//utils
-import { e2p } from "utils/e2p";
+//services
+import { useFetchProductsData } from "services/queries";
 
 //styles
 import styles from "./ProductsPage.module.css";
 
 function ProductsPage() {
+  const [page, setPage] = useState(0);
+  const[addModal, setAddModal] = useState(false)
+
+  const { isPending, isError, error, data, isFetching, isPlaceholderData } =
+    useFetchProductsData(page);
+  console.log(data);
+
   return (
     <div className={styles.productsPage}>
       <SearchBox />
@@ -20,14 +31,15 @@ function ProductsPage() {
           <img src={setting} />
           <p>مدیریت کالا</p>
         </div>
-        <button>افزودن محصول</button>
+        <button onClick={() => setAddModal(true)}>افزودن محصول</button>
       </div>
-      <ProductsList />
-      <div className={styles.pagination}>
-        <span>{e2p(1)}</span>
-        <span>{e2p(2)}</span>
-        <span>{e2p(3)}</span>
-      </div>
+      <ProductsList
+        data={data}
+        isPending={isPending}
+        error={error}
+        isError={isError}
+      />
+      {addModal && <AddProduct setAddModal={setAddModal} />}
     </div>
   );
 }

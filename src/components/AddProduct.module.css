@@ -1,0 +1,83 @@
+.addProduct {
+  background-color: #3333337d;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 460px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 30px;
+}
+
+.form h3 {
+  font-size: 1rem;
+  color: #282828;
+  margin-bottom: 30px;
+}
+
+.form .inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form label {
+  font-size: 0.8rem;
+  color: #282828;
+  margin-bottom: 5px;
+}
+
+.form input {
+  width: 350px;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.7rem;
+  color: #8d8d8d;
+  font-weight: 200;
+}
+
+.form input:hover,
+.form input:focus {
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.addProduct .buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.addProduct button {
+  background-color: #55a3f0;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.addProduct button:last-child {
+  background-color: #dfdfdf;
+  color: #282828cc;
+}

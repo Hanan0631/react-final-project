@@ -1,4 +1,4 @@
-//images
+//assets
 import search from "assets/images/search.svg";
 import admin from "assets/images/admin.svg";
 

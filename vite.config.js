@@ -8,6 +8,7 @@ const paths = [
   "configs",
   "hooks",
   "pages",
+  "providers",
   "router",
   "services",
   "styles",

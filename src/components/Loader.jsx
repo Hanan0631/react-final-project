@@ -13,7 +13,6 @@ function Loader() {
         width="80"
         margin="50%"
         ariaLabel="magnifying-glass-loading"
-        wrapperStyle={{}}
         wrapperClass="magnifying-glass-wrapper"
         glassColor="#c0efff"
         color="#e15b64"
