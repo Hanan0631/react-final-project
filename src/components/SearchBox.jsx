@@ -1,15 +1,16 @@
 //assets
-import search from "assets/images/search.svg";
+import searchButton from "assets/images/search.svg";
 import admin from "assets/images/admin.svg";
 
 //styles
 import styles from "./SearchBox.module.css";
 
 function SearchBox() {
+
   return (
     <div className={styles.searchBox}>
       <div className={styles.search}>
-        <img src={search} />
+        <img src={searchButton} />
         <span>جستجو کالا</span>
       </div>
       <div className={styles.admin}>

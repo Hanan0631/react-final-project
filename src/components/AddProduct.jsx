@@ -17,7 +17,6 @@ function AddProduct({ setAddModal }) {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 

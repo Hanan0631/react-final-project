@@ -22,4 +22,22 @@ const useAddProduct = () => {
   return useMutation({ mutationFn });
 };
 
-export { useRegister, useLogin, useAddProduct };
+const useDeleteMultipleProducts = () => {
+  const mutationFn = (data) => api.delete("products", data);
+
+  return useMutation({ mutationFn });
+};
+
+const useDeleteProductById = () => {
+  const mutationFn = (id) => api.delete(`products/${id}`);
+
+  return useMutation({ mutationFn });
+};
+
+export {
+  useRegister,
+  useLogin,
+  useAddProduct,
+  useDeleteMultipleProducts,
+  useDeleteProductById,
+};

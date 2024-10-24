@@ -1,0 +1,52 @@
+.delete {
+  background-color: #3333337d;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 460px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.delete img {
+    margin-bottom: 40px;
+}
+
+.delete p {
+    color: #282828;
+    margin-bottom: 20px;
+}
+
+.delete .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.delete .buttons button {
+    width: 160px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #F43F5E;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.delete .buttons button:last-child {
+    background-color: #DFDFDF;
+    color: #282828CC;
+}

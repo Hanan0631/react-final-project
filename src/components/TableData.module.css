@@ -41,6 +41,7 @@
 .table img {
   width: 20px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .table .images {
