@@ -14,6 +14,7 @@ function ProductsList({
   checkBox,
   setSelectedIds,
   setDeleteModal,
+  setId,
 }) {
   return (
     <div>
@@ -27,6 +28,7 @@ function ProductsList({
           checkBox={checkBox}
           setSelectedIds={setSelectedIds}
           setDeleteModal={setDeleteModal}
+          setId={setId}
         />
       )}
     </div>

@@ -1,22 +1,15 @@
-//tanstack
-import { useQueryClient } from "@tanstack/react-query";
-
 //assets
 import deleteButton from "assets/images/delete.svg";
 import editButton from "assets/images/edit.svg";
 
-//services
-import { useDeleteProductById } from "services/mutations";
-
 //utils
 import { e2p } from "utils/replaceNumber";
 import { sp } from "utils/replaceNumber";
-import { errorToast, successToast } from "utils/toast";
 
 //styles
 import styles from "./TableData.module.css";
 
-function TableData({ data, checkBox, setSelectedIds, setDeleteModal }) {
+function TableData({ data, checkBox, setSelectedIds, setDeleteModal, setId }) {
   const checkHandler = (id) => {
     setSelectedIds((prevSelectedIds) =>
       prevSelectedIds.includes(id)
@@ -25,21 +18,9 @@ function TableData({ data, checkBox, setSelectedIds, setDeleteModal }) {
     );
   };
 
-  const { mutate } = useDeleteProductById();
-  const queryClient = useQueryClient();
-
   const deleteByIdHandler = (id) => {
-    mutate(id, {
-      onSuccess: () => {
-        queryClient.invalidateQueries("useFetchProductsData");
-        setDeleteModal(false);
-        successToast("محصول مورد نظر با موفقیت حذف شد");
-      },
-      onError: (error) => {
-        if (error.status === 401)
-          errorToast("برای حذف محصول وارد حساب کاربری خود شوید");
-      },
-    });
+    setId(id);
+    setDeleteModal(true);
   };
 
   return (

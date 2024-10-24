@@ -20,6 +20,7 @@ import styles from "./ProductsPage.module.css";
 function ProductsPage() {
   const [page, setPage] = useState(0);
   const [checkBox, setCheckBox] = useState(false);
+  const [id, setId] = useState("");
   const [selectedIds, setSelectedIds] = useState([]);
   const [addModal, setAddModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -59,9 +60,12 @@ function ProductsPage() {
         checkBox={checkBox}
         setSelectedIds={setSelectedIds}
         setDeleteModal={setDeleteModal}
+        setId={setId}
       />
       {addModal && <AddProduct setAddModal={setAddModal} />}
-      {deleteModal && <DeleteProduct setDeleteModal={setDeleteModal} />}
+      {deleteModal && (
+        <DeleteProduct setDeleteModal={setDeleteModal} id={id} setId={setId} />
+      )}
       {multipleDeleteModal && (
         <DeleteProducts
           setMultipleDeleteModal={setMultipleDeleteModal}
