@@ -13,22 +13,26 @@ import { errorToast, successToast } from "utils/toast";
 //styles
 import styles from "./DeleteProduct.module.css";
 
-function DeleteProducts({ setMultipleDeleteModal, selectedIds }) {
+function DeleteProducts({ setMultipleDeleteModal, selectedIds, setCheckBox }) {
   const { mutate } = useDeleteMultipleProducts();
   const queryClient = useQueryClient();
 
   const deleteHandler = (data) => {
-    mutate(data, {
-      onSuccess: () => {
-        queryClient.invalidateQueries("useFetchProductsData");
-        setMultipleDeleteModal(false);
-        successToast("محصولات با موفقیت حذف شدند");
-      },
-      onError: (error) => {
-        if (error.status === 401)
-          errorToast("برای حذف محصولات وارد حساب کاربری خود شوید");
-      },
-    });
+    mutate(
+      { data },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries("useFetchProductsData");
+          setMultipleDeleteModal(false);
+          setCheckBox(false);
+          successToast("محصولات با موفقیت حذف شدند");
+        },
+        onError: (error) => {
+          if (error.status === 401)
+            errorToast("برای حذف محصولات وارد حساب کاربری خود شوید");
+        },
+      }
+    );
     console.log(data);
   };
 

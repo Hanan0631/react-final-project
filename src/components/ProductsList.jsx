@@ -15,6 +15,7 @@ function ProductsList({
   setSelectedIds,
   setDeleteModal,
   setId,
+  setEditModal,
 }) {
   return (
     <div>
@@ -29,6 +30,7 @@ function ProductsList({
           setSelectedIds={setSelectedIds}
           setDeleteModal={setDeleteModal}
           setId={setId}
+          setEditModal={setEditModal}
         />
       )}
     </div>

@@ -6,7 +6,6 @@ import admin from "assets/images/admin.svg";
 import styles from "./SearchBox.module.css";
 
 function SearchBox() {
-
   return (
     <div className={styles.searchBox}>
       <div className={styles.search}>

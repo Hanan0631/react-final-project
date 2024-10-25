@@ -9,7 +9,14 @@ import { sp } from "utils/replaceNumber";
 //styles
 import styles from "./TableData.module.css";
 
-function TableData({ data, checkBox, setSelectedIds, setDeleteModal, setId }) {
+function TableData({
+  data,
+  checkBox,
+  setSelectedIds,
+  setDeleteModal,
+  setId,
+  setEditModal,
+}) {
   const checkHandler = (id) => {
     setSelectedIds((prevSelectedIds) =>
       prevSelectedIds.includes(id)
@@ -21,6 +28,11 @@ function TableData({ data, checkBox, setSelectedIds, setDeleteModal, setId }) {
   const deleteByIdHandler = (id) => {
     setId(id);
     setDeleteModal(true);
+  };
+
+  const editHandler = (id) => {
+    setId(id);
+    setEditModal(true);
   };
 
   return (
@@ -41,10 +53,10 @@ function TableData({ data, checkBox, setSelectedIds, setDeleteModal, setId }) {
             <span>{item.id}</span>
 
             {checkBox ? (
-              <input type="checkbox" onChange={() => checkHandler(item.id)} />
+              <input className={styles.images} type="checkbox" onChange={() => checkHandler(item.id)} />
             ) : (
               <span className={styles.images}>
-                <img src={editButton} />
+                <img src={editButton} onClick={() => editHandler(item.id)} />
                 <img
                   src={deleteButton}
                   onClick={() => deleteByIdHandler(item.id)}

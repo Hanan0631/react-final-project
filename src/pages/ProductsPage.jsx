@@ -10,6 +10,8 @@ import SearchBox from "components/SearchBox";
 import AddProduct from "components/AddProduct";
 import DeleteProducts from "components/DeleteProducts";
 import DeleteProduct from "components/DeleteProduct";
+import EditProduct from "components/EditProduct";
+import Pagination from "components/Pagination";
 
 //services
 import { useFetchProductsData } from "services/queries";
@@ -18,12 +20,13 @@ import { useFetchProductsData } from "services/queries";
 import styles from "./ProductsPage.module.css";
 
 function ProductsPage() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [checkBox, setCheckBox] = useState(false);
   const [id, setId] = useState("");
   const [selectedIds, setSelectedIds] = useState([]);
   const [addModal, setAddModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
   const [multipleDeleteModal, setMultipleDeleteModal] = useState(false);
   const { isPending, isError, error, data, isFetching, isPlaceholderData } =
     useFetchProductsData(page);
@@ -61,17 +64,28 @@ function ProductsPage() {
         setSelectedIds={setSelectedIds}
         setDeleteModal={setDeleteModal}
         setId={setId}
+        setEditModal={setEditModal}
       />
       {addModal && <AddProduct setAddModal={setAddModal} />}
       {deleteModal && (
         <DeleteProduct setDeleteModal={setDeleteModal} id={id} setId={setId} />
       )}
+      {editModal && (
+        <EditProduct setEditModal={setEditModal} id={id} setId={setId} />
+      )}
       {multipleDeleteModal && (
         <DeleteProducts
           setMultipleDeleteModal={setMultipleDeleteModal}
           selectedIds={selectedIds}
+          setCheckBox={setCheckBox}
         />
       )}
+      <Pagination
+        page={page}
+        setPage={setPage}
+        isPlaceholderData={isPlaceholderData}
+        data={data}
+      />
     </div>
   );
 }
