@@ -14,7 +14,7 @@ import { getCookie } from "utils/cookie";
 //styles
 import styles from "./StoreHeader.module.css";
 
-function StoreHeader({ search, searchHandler }) {
+function StoreHeader({ search, setSearch }) {
   const token = getCookie("token");
 
   return (
@@ -27,7 +27,7 @@ function StoreHeader({ search, searchHandler }) {
             type="text"
             placeholder="جستجو"
             value={search}
-            onChange={searchHandler}
+            onChange={e => setSearch(e.target.value)}
           />
         </div>
       </div>

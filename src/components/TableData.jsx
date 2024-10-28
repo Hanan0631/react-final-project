@@ -45,7 +45,7 @@ function TableData({
         <span></span>
       </div>
       <div className={styles.body}>
-        {data?.data.data.map((item) => (
+        {data?.map((item) => (
           <div className={styles.row} key={item.id}>
             <span>{item.name}</span>
             <span>{e2p(item.quantity)}</span>

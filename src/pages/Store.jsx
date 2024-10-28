@@ -1,6 +1,5 @@
-
 //react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //components
 import StoreHeader from "components/StoreHeader";
@@ -18,22 +17,32 @@ function Store({ page, setPage }) {
   const [searched, setSearched] = useState([]);
 
   const { data } = useFetchProductsData(page, search);
-  
-  const searchHandler = (event) => {
-    setSearch(event.target.value);
+
+  // const searchHandler = (event) => {
+  //   setSearch(event.target.value);
+  //   const searchedProducts = data?.data.data.filter((item) =>
+  //     item.name.includes(search)
+  // );
+  // setSearched(searchedProducts);
+  // console.log(searchedProducts);
+  // };
+
+  useEffect(() => {
     const searchedProducts = data?.data.data.filter((item) =>
       item.name.includes(search)
-  );
-  setSearched(searchedProducts);
-  console.log(searchedProducts);
-  };
+    );
+    setSearched(searchedProducts);
+  }, [search]);
 
   return (
     <div className={styles.storeContainer}>
-      <StoreHeader search={search} searchHandler={searchHandler} />
+      <StoreHeader
+        search={search}
+        setSearch={setSearch}
+      />
       <div className={styles.cardContainer}>
         {search
-          ? searched.map((item) => <ProductCard key={item.id} item={item} />)
+          ? searched?.map((item) => <ProductCard key={item.id} item={item} />)
           : data?.data.data.map((item) => (
               <ProductCard key={item.id} item={item} />
             ))}

@@ -19,9 +19,18 @@
   margin-left: 10px;
 }
 
-.search span {
+.search input {
+  border: none;
   font-size: 1rem;
   color: #00000099;
+}
+
+.search input:hover {
+  outline: none;
+}
+
+.search input:focus {
+  outline: none;
 }
 
 .admin {

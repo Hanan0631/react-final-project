@@ -1,20 +1,22 @@
+//react
+import { useState } from "react";
+
 //react-router-dom
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //pages
 import PageNotFound from "pages/404";
 import LoginPage from "pages/LoginPage";
 import RegisterPage from "pages/RegisterPage";
 import AdminPage from "pages/AdminPage";
+import Store from "pages/Store";
 
-//utils
-import { getCookie } from "utils/cookie";
-import Store from "src/pages/Store";
-import { useState } from "react";
+//providers
+import AdminPageProvider from "providers/AdminPageProvider";
+import LoginRegisterPageProvider from "providers/LoginRegisterPageProvider";
 
 function Router() {
   const [page, setPage] = useState(1);
-  const token = getCookie("token");
 
   return (
     <BrowserRouter>
@@ -23,20 +25,26 @@ function Router() {
         <Route
           path="/admin"
           element={
-            token ? (
+            <AdminPageProvider>
               <AdminPage page={page} setPage={setPage} />
-            ) : (
-              <Navigate to="/login" />
-            )
+            </AdminPageProvider>
           }
         />
         <Route
           path="/login"
-          element={token ? <Navigate to="/admin" /> : <LoginPage />}
+          element={
+            <LoginRegisterPageProvider>
+              <LoginPage />
+            </LoginRegisterPageProvider>
+          }
         />
         <Route
           path="/register"
-          element={token ? <Navigate to="/admin" /> : <RegisterPage />}
+          element={
+            <LoginRegisterPageProvider>
+              <RegisterPage />
+            </LoginRegisterPageProvider>
+          }
         />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

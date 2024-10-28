@@ -1,5 +1,5 @@
 //react
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 ///assets
 import setting from "assets/images/setting.svg";
@@ -21,6 +21,8 @@ import styles from "./AdminPage.module.css";
 import { Link } from "react-router-dom";
 
 function AdminPage({ page, setPage }) {
+  const [search, setSearch] = useState("");
+  const [searched, setSearched] = useState([]);
   const [checkBox, setCheckBox] = useState(false);
   const [id, setId] = useState("");
   const [selectedIds, setSelectedIds] = useState([]);
@@ -28,15 +30,24 @@ function AdminPage({ page, setPage }) {
   const [deleteModal, setDeleteModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [multipleDeleteModal, setMultipleDeleteModal] = useState(false);
+
   const { isPending, isError, error, data } = useFetchProductsData(page);
+
+  useEffect(() => {
+    const searchedProducts = data?.data.data.filter((item) =>
+      item.name.includes(search)
+    );
+    setSearched(searchedProducts);
+  }, [search]);
 
   const deleteMultipleHandler = () => {
     setMultipleDeleteModal(true);
   };
 
+
   return (
     <div className={styles.adminContainer}>
-      <SearchBox />
+      <SearchBox search={search} setSearch={setSearch} />
       <div className={styles.management}>
         <div>
           <img src={setting} />
@@ -57,7 +68,7 @@ function AdminPage({ page, setPage }) {
         )}
       </div>
       <ProductsList
-        data={data}
+        data={search ? searched : data?.data.data}
         isPending={isPending}
         error={error}
         isError={isError}

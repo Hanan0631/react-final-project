@@ -5,12 +5,17 @@ import adminPhoto from "assets/images/admin-photo.svg";
 //styles
 import styles from "./SearchBox.module.css";
 
-function SearchBox() {
+function SearchBox({ search, setSearch }) {
   return (
     <div className={styles.searchBox}>
       <div className={styles.search}>
         <img src={searchButton} />
-        <span>جستجو کالا</span>
+        <input
+          type="text"
+          placeholder="جستجو کالا"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
       <div className={styles.admin}>
         <img src={adminPhoto} />
