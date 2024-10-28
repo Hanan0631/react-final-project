@@ -1,6 +1,6 @@
 //assets
 import searchButton from "assets/images/search.svg";
-import admin from "assets/images/admin.svg";
+import adminPhoto from "assets/images/admin-photo.svg";
 
 //styles
 import styles from "./SearchBox.module.css";
@@ -13,7 +13,7 @@ function SearchBox() {
         <span>جستجو کالا</span>
       </div>
       <div className={styles.admin}>
-        <img src={admin} />
+        <img src={adminPhoto} />
         <div>
           <p>میلاد عظمی</p>
           <span>مدیر</span>

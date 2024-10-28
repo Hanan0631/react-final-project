@@ -1,0 +1,46 @@
+.header {
+  max-width: 1140px;
+  margin: 0px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header img {
+  width: 40px;
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 35px;
+}
+
+.logo div {
+  display: flex;
+  background-color: #ffffff;
+  border: 1px solid #E4E4E4;
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.logo div img {
+  width: 20px;
+  margin-left: 10px;
+}
+
+.logo div input {
+  border: none;
+  color: #282828;
+}
+
+.logo div input:hover,
+.logo div input:focus {
+  outline: none;
+}
+
+
+.cart {
+  margin-left: 20px;
+}

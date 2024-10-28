@@ -21,8 +21,8 @@ function DeleteProducts({ setMultipleDeleteModal, selectedIds, setCheckBox }) {
     mutate(
       { data },
       {
-        onSuccess: () => {
-          queryClient.invalidateQueries("useFetchProductsData");
+        onSuccess: async () => {
+          await queryClient.invalidateQueries("useFetchProductsData");
           setMultipleDeleteModal(false);
           setCheckBox(false);
           successToast("محصولات با موفقیت حذف شدند");

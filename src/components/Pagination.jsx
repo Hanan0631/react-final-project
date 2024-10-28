@@ -8,21 +8,19 @@ import { e2p } from "utils/replaceNumber";
 import styles from "./Pagination.module.css";
 
 function Pagination({ page, setPage, data }) {
-  console.log(data?.data.totalPages);
-  console.log(page);
   const queryClient = useQueryClient();
 
-  const nextHandler = () => {
+  const nextHandler = async () => {
     if (data?.data.totalPages > page) {
       setPage((prevPage) => prevPage + 1);
-      queryClient.invalidateQueries(["products-list", page]);
+      await queryClient.invalidateQueries(["products-list", page]);
     }
   };
 
-  const previousHandler = () => {
+  const previousHandler = async () => {
     if (page > 1) {
       setPage((prevPage) => prevPage - 1);
-      queryClient.invalidateQueries(["products-list", page]);
+      await queryClient.invalidateQueries(["products-list", page]);
     }
   };
 

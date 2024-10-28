@@ -14,13 +14,13 @@ import EditProduct from "components/EditProduct";
 import Pagination from "components/Pagination";
 
 //services
-import { useFetchProductsData } from "services/queries";
+import { useFetchProductsData } from "src/services/queries";
 
 //styles
-import styles from "./ProductsPage.module.css";
+import styles from "./AdminPage.module.css";
+import { Link } from "react-router-dom";
 
-function ProductsPage() {
-  const [page, setPage] = useState(1);
+function AdminPage({ page, setPage }) {
   const [checkBox, setCheckBox] = useState(false);
   const [id, setId] = useState("");
   const [selectedIds, setSelectedIds] = useState([]);
@@ -28,15 +28,14 @@ function ProductsPage() {
   const [deleteModal, setDeleteModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [multipleDeleteModal, setMultipleDeleteModal] = useState(false);
-  const { isPending, isError, error, data, isFetching, isPlaceholderData } =
-    useFetchProductsData(page);
+  const { isPending, isError, error, data } = useFetchProductsData(page);
 
   const deleteMultipleHandler = () => {
     setMultipleDeleteModal(true);
   };
 
   return (
-    <div className={styles.productsPage}>
+    <div className={styles.adminContainer}>
       <SearchBox />
       <div className={styles.management}>
         <div>
@@ -45,11 +44,13 @@ function ProductsPage() {
         </div>
         {checkBox ? (
           <div>
+            <Link to="/">فروشگاه</Link>
             <button onClick={deleteMultipleHandler}>حذف محصولات</button>
             <button onClick={() => setCheckBox(false)}>انصراف</button>
           </div>
         ) : (
           <div>
+            <Link to="/">فروشگاه</Link>
             <button onClick={() => setAddModal(true)}>افزودن محصول</button>
             <button onClick={() => setCheckBox(true)}>انتخاب محصول</button>
           </div>
@@ -80,14 +81,9 @@ function ProductsPage() {
           setCheckBox={setCheckBox}
         />
       )}
-      <Pagination
-        page={page}
-        setPage={setPage}
-        isPlaceholderData={isPlaceholderData}
-        data={data}
-      />
+      <Pagination page={page} setPage={setPage} data={data} />
     </div>
   );
 }
 
-export default ProductsPage;
+export default AdminPage;

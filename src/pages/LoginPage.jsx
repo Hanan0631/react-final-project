@@ -38,7 +38,7 @@ function LoginPage() {
       {
         onSuccess: (data) => {
           setCookie("token", data.data?.token);
-          navigate("/");
+          navigate("/admin");
           window.location.reload();
           successToast("ورود شما با موفقیت انجام شد")
         },

@@ -53,7 +53,11 @@ function TableData({
             <span>{item.id}</span>
 
             {checkBox ? (
-              <input className={styles.images} type="checkbox" onChange={() => checkHandler(item.id)} />
+              <input
+                className={styles.images}
+                type="checkbox"
+                onChange={() => checkHandler(item.id)}
+              />
             ) : (
               <span className={styles.images}>
                 <img src={editButton} onClick={() => editHandler(item.id)} />

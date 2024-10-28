@@ -19,8 +19,8 @@ function DeleteProduct({ setDeleteModal, id, setId }) {
 
   const deleteHandler = (id) => {
     mutate(id, {
-      onSuccess: () => {
-        queryClient.invalidateQueries("useFetchProductsData");
+      onSuccess: async () => {
+        await queryClient.invalidateQueries("useFetchProductsData");
         setDeleteModal(false);
         successToast("محصول مورد نظر با موفقیت حذف شد");
       },

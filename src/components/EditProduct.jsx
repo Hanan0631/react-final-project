@@ -29,8 +29,8 @@ function EditProduct({ setEditModal, id, setId }) {
     mutate(
       { id, data },
       {
-        onSuccess: () => {
-          queryClient.invalidateQueries("useFetchProductsData");
+        onSuccess: async () => {
+          await queryClient.invalidateQueries("useFetchProductsData");
           setEditModal(false);
           successToast("محصول مورد نظر با موفقیت ویرایش شد");
         },

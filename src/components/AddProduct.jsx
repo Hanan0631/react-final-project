@@ -27,8 +27,8 @@ function AddProduct({ setAddModal }) {
   const onSubmit = (data) => {
     console.log(data);
     mutate(data, {
-      onSuccess: () => {
-        queryClient.invalidateQueries("useFetchProductsData");
+      onSuccess: async () => {
+        await queryClient.invalidateQueries("useFetchProductsData");
         setAddModal(false);
         successToast("محصول جدید با موفقیت اضافه شد");
       },

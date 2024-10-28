@@ -1,0 +1,24 @@
+.cardContainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  max-width: 1140px;
+  margin: 20px 0;
+  padding: 20px 30px;
+  border: 1px solid #e4e4e4;
+  border-radius: 16px;
+}
+
+.cardContainer h3, .cardContainer p {
+    color: #282828;
+}
+
+.cardContainer button {
+    background: none;
+    border: none;
+}
+
+.cardContainer img {
+    width: 20px;
+}
+
