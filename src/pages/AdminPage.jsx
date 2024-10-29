@@ -31,7 +31,14 @@ function AdminPage({ page, setPage }) {
   const [editModal, setEditModal] = useState(false);
   const [multipleDeleteModal, setMultipleDeleteModal] = useState(false);
 
-  const { isPending, isError, error, data } = useFetchProductsData(page);
+  const controller = new AbortController();
+  const signal = controller.signal;
+
+  const { isPending, isError, error, data } = useFetchProductsData(
+    page,
+    search,
+    { signal }
+  );
 
   useEffect(() => {
     const searchedProducts = data?.data.data.filter((item) =>
@@ -43,7 +50,6 @@ function AdminPage({ page, setPage }) {
   const deleteMultipleHandler = () => {
     setMultipleDeleteModal(true);
   };
-
 
   return (
     <div className={styles.adminContainer}>
